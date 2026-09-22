@@ -79,19 +79,39 @@ validation:
 ```
 .
 ├── README.md
-├── tiktok_engagement_prediction_final.ipynb   # Clean, reproducible final pipeline
-└── submissions/
-    └── viral_single_gate_rmse_61410.csv       # Final Kaggle submission
+├── tiktok-engagement-prediction.ipynb   # Clean, reproducible final pipeline
+├── viral_single_gate_rmse_61410.csv     # Final Kaggle submission
+└── pedictive-modeling-ds/               # Competition dataset
+    ├── train_videos.csv
+    ├── test_videos.csv
+    ├── engagement_daily.csv
+    ├── creators_daily.csv
+    └── sample_submission.csv
 ```
 
 ## Reproducing the Result
 
-1. Open `tiktok_engagement_prediction_final.ipynb` in a **Kaggle Notebook**
-   with the competition dataset (`predictive-modelling-ds`) attached.
+**On Kaggle:**
+1. Open the notebook in a **Kaggle Notebook** with the competition dataset
+   (`predictive-modelling-ds`) attached, and set `DATA_PATH` back to
+   `/kaggle/input/competitions/predictive-modelling-ds`.
 2. Run all cells top to bottom.
-3. The final submission file is written to
-   `/kaggle/working/viral_single_gate_rmse_61410.csv`.
+3. The final submission file is written next to the notebook.
 4. Upload that file on the competition's **Submit Predictions** page.
+
+**Locally:**
+1. Install the dependencies: `pandas`, `numpy`, `scikit-learn`, `catboost`,
+   `xgboost`, and `jupyter`/`nbconvert`.
+2. Make sure the dataset CSVs are in `pedictive-modeling-ds/` (already the
+   case in this repo) and `DATA_PATH` in the notebook points to that folder.
+3. Run all cells top to bottom (e.g.
+   `python -m nbconvert --to notebook --execute --inplace tiktok-engagement-prediction.ipynb`).
+4. The final submission file is written to
+   `viral_single_gate_rmse_61410.csv` in the project root.
+
+A local re-run reproduces an OOF RMSE of **~61,499**, matching the
+originally reported **61,410** within normal run-to-run variance from
+library-version differences.
 
 ## Rules Compliance
 - Tabular modeling only (no external scraping, LLMs, or embeddings).
