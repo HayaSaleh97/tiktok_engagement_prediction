@@ -113,8 +113,4 @@ A local re-run reproduces an OOF RMSE of **~61,499**, matching the
 originally reported **61,410** within normal run-to-run variance from
 library-version differences.
 
-## Rules Compliance
-- Tabular modeling only (no external scraping, LLMs, or embeddings).
-- No data leakage: all features are computed strictly from Days 0–5
-  engagement and creator snapshots at or before the Day-5 cutoff.
-- Individual effort — no team collaboration on modeling.
+
